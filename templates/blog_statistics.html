@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Статистика по статьям</h1>
+<table>
+    <tr>
+        <th>Название статьи</th>
+        <th>Количество просмотров</th>
+    </tr>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.views_count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

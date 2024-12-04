@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Главная страница - Панель управления</h1>
+
+<h2>Статистика рассылок</h2>
+<p>Всего рассылок: {{ total_mailings }}</p>
+<p>Активных рассылок: {{ active_mailings }}</p>
+<p>Уникальных получателей: {{ unique_recipients }}</p>
+
+<h2>Статистика пользователей</h2>
+<p>Всего пользователей: {{ total_users }}</p>
+<p>Активных пользователей: {{ active_users }}</p>
+<p>Заблокированных пользователей: {{ blocked_users }}</p>
+
+<h2>Статистика блогов</h2>
+<p>Всего опубликованных статей: {{ total_posts }}</p>
+<h3>Популярные статьи:</h3>
+<ul>
+  {% for post in popular_posts %}
+    <li>{{ post.title }} - {{ post.views }} просмотров</li>
+  {% endfor %}
+</ul>
+{% endblock %}
