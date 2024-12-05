@@ -31,7 +31,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
         'LOCATION': '127.0.0.1:11211',
     }
 }
@@ -86,8 +86,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'my_new_database',
+        'USER': 'my_new_user',
+        'PASSWORD': 'newpassword',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -127,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type

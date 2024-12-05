@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +12,8 @@
     <header>
         <h1>Сервис рассылок</h1>
         <nav>
-            <a href="{% url 'mailing:mailing_list' %}">Рассылки</a>
-            <a href="{% url 'users:profile' %}">Профиль</a>
-            <a href="{% url 'logout' %}">Выйти</a>
+            <a href="{% url 'mailings:mailing_list' %}">Рассылки</a>
+            <a href="{% url 'users:login' %}">Профиль</a>
         </nav>
     </header>
     

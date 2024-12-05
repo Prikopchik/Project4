@@ -5,8 +5,8 @@
 {% for mailing in mailings %}
     <div>
         <p>{{ mailing.title }}</p>
-        <a href="{% url 'edit_mailing' mailing.pk %}">Редактировать</a>
-        <a href="{% url 'delete_mailing' mailing.pk %}">Удалить</a>
+        <a href="{% url 'mailings:edit_mailing' mailing.pk %}">Редактировать</a>
+        <a href="{% url 'mailings:delete_mailing' mailing.pk %}">Удалить</a>
     </div>
 {% endfor %}
 {% endblock %}

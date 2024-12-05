@@ -29,7 +29,7 @@ def mailing_stats(request):
         'successful_attempts': successful_attempts,
         'failed_attempts': failed_attempts,
     }
-    return render(request, 'mailing/statistics.html', context)
+    return render(request, 'statistics.html', context)
 
 
 @cache_page(60 * 15)
@@ -37,27 +37,27 @@ def mailing_stats(request):
 @permission_required('mailing.view_mailing', raise_exception=True)
 def mailing_list(request):
     mailings = Mailing.objects.all()
-    return render(request, 'mailing/mailing_list.html', {'mailings': mailings})
+    return render(request, 'mailing_list.html', {'mailings': mailings})
 
 
 @login_required
 def user_mailing_list(request):
     mailings = Mailing.objects.filter(user=request.user)
-    return render(request, 'mailing/user_mailing_list.html', {'mailings': mailings})
+    return render(request, 'user_mailing_list.html', {'mailings': mailings})
 
 
 @login_required
 @permission_required('mailing.change_mailing', raise_exception=True)
 def edit_mailing(request, pk):
     mailing = get_object_or_404(Mailing, pk=pk, user=request.user)
-    return render(request, 'mailing/edit_mailing.html', {'mailing': mailing})
+    return render(request, 'edit_mailing.html', {'mailing': mailing})
 
 
 @login_required
 @permission_required('mailing.view_mailing', raise_exception=True)
 def manager_mailing_list(request):
     mailings = Mailing.objects.all()
-    return render(request, 'mailing/manager_mailing_list.html', {'mailings': mailings})
+    return render(request, 'manager_mailing_list.html', {'mailings': mailings})
 
 def get_mailing_list():
     mailings = cache.get('mailing_list')

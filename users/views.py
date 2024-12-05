@@ -17,7 +17,7 @@ def register(request):
             return redirect('email_confirmation_sent')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 
 def login_view(request):
@@ -32,7 +32,7 @@ def login_view(request):
                 return redirect('home')
     else:
         form = AuthenticationForm()
-    return render(request, 'users/login.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 def logout_view(request):
     logout(request)
@@ -40,4 +40,4 @@ def logout_view(request):
 
 def user_stats(request):
     users = CustomUser.objects.all()
-    return render(request, 'users/user_statistics.html', {'users': users})
+    return render(request, 'user_statistics.html', {'users': users})

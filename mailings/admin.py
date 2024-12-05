@@ -23,5 +23,3 @@ class MailingAdmin(admin.ModelAdmin):
             return Mailing.objects.all()
         else:
             return Mailing.objects.filter(user=request.user)
-
-admin.site.register(Mailing, MailingAdmin)
