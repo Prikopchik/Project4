@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Email Confirmation</h2>
+        <p>Спасибо за регистрацию, {{ user.username }}!</p>
+        <p>Для подтверждения вашего адреса электронной почты, пожалуйста, перейдите по следующей ссылке:</p>
+        <p><a href="{{ confirm_link }}" target="_blank">Подтвердить email</a></p>
+        <p>Если вы не можете перейти по ссылке, скопируйте и вставьте её в браузер.</p>
+    </div>
+{% endblock %}

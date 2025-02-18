@@ -29,6 +29,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
+AUTH_USER_MODEL = 'users.CustomUser'
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -140,8 +142,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.example.com'
-EMAIL_PORT = 587
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')
+EMAIL_HOST_USER = 'testowaja@yandex.com'
+EMAIL_HOST_PASSWORD = 'uimcpwfxatjscszf'
+DEFAULT_FROM_EMAIL = 'testowaja@yandex.com'

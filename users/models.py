@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser,Group, Permission 
 from django.db import models
+from django.contrib.auth.models import User
 
 class CustomUser(AbstractUser):
     ROLE_CHOICES = [
@@ -13,7 +15,8 @@ class CustomUser(AbstractUser):
     sent_messages = models.PositiveIntegerField(default=0)
     failed_messages = models.PositiveIntegerField(default=0)
     is_blocked = models.BooleanField(default=False)
-
+    is_active = models.BooleanField(default=False)
+    
     groups = models.ManyToManyField(
         Group,
         related_name='customuser_groups', 
@@ -41,3 +44,11 @@ class CustomUser(AbstractUser):
     
     def __str__(self):
         return self.username
+    
+class EmailConfirmationToken(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    token = models.CharField(max_length=255, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Токен для {self.user.username}"
