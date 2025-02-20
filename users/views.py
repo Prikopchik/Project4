@@ -36,7 +36,7 @@ def register(request):
         # Создание токена только если пользователь есть
         token = str(uuid.uuid4())
         EmailConfirmationToken.objects.create(user=user, token=token)
-
+        print(token)
         return render(request, 'login.html')  # Перенаправляем на страницу входа
 
     return render(request, 'registration.html')
