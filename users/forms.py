@@ -6,3 +6,6 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'email', 'password1', 'password2']
+
+class TokenConfirmationForm(forms.Form):
+    token = forms.CharField(max_length=32, label="Введите токен подтверждения")

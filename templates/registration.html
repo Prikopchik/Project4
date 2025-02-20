@@ -1,12 +1,27 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+    <h2>Регистрация</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Логин:</label>
+        <input type="text" name="username" required><br>
 
-{% block title %}Регистрация{% endblock %}
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
 
-{% block content %}
-<h2>Регистрация</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Зарегистрироваться</button>
-</form>
-{% endblock %}
+        <label for="password">Пароль:</label>
+        <input type="password" name="password" required><br>
+
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
