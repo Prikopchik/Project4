@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from users.views import User
+
 class Client(models.Model):
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=100)
@@ -25,6 +27,7 @@ class Mailing(models.Model):
         ('completed', 'Завершена'),
     ]
     
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mailings')
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='created')

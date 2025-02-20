@@ -1,3 +1,5 @@
+import uuid
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser,Group, Permission 
 from django.db import models
@@ -47,7 +49,7 @@ class CustomUser(AbstractUser):
     
 class EmailConfirmationToken(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    token = models.CharField(max_length=255, unique=True)
+    token = models.CharField(max_length=255, unique=True, default=uuid.uuid4)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

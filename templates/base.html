@@ -5,25 +5,32 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Сервис рассылок{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="{% static 'js/script.js' %}"></script>
 </head>
 <body>
-    <header>
-        <h1>Сервис рассылок</h1>
-        <nav>
-            <a href="{% url 'mailings:mailing_list' %}">Рассылки</a>
+<header>
+    <h1>Сервис рассылок</h1>
+    <nav>
+        {% if user.is_authenticated %}
+            {% if user.role == "manager" %}
+                <a href="{% url 'mailings:mailing_list' %}">Рассылки</a>
+            {% else %}
+                <a href="{% url 'mailings:user_mailing_list' %}">Рассылки</a>
+            {% endif %}
+        {% else %}
             <a href="{% url 'users:login' %}">Профиль</a>
             <a href="{% url 'users:register' %}">Регистрация</a>
-        </nav>
-    </header>
-    
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-    
-    <footer>
-        <p>&copy; 2024 Сервис рассылок</p>
-    </footer>
+        {% endif %}
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>&copy; 2024 Сервис рассылок</p>
+</footer>
 </body>
 </html>

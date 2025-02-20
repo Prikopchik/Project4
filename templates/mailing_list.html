@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>Список рассылок</h1>
+<a href="{% url 'mailings:create_mailing' %}">Создать рассылку</a>
 {% for mailing in mailings %}
     <div>
         <p>{{ mailing.title }}</p>

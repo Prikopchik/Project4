@@ -5,6 +5,8 @@
 {% for mailing in mailings %}
     <div>
         <p>{{ mailing.title }}</p>
+        <p><strong>ID:</strong> {{ mailing.id }}</p>
+        </p><strong>Статус:</strong> {{ mailing.get_status_display }}</p>
         <a href="{% url 'mailings:view_mailing' mailing.pk %}">Просмотр</a>
     </div>
 {% endfor %}

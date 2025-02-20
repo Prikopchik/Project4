@@ -14,4 +14,5 @@ urlpatterns = [
     path('user_statistics/', views.user_stats, name='user_statistics'),
     path('email-confirmation-sent/', views.email_confirmation_sent, name='email_confirmation_sent'),
     path('confirm-email/', views.confirm_email, name='confirm_email'),
+    path('email/<str:token>/confirm/', views.confirm_user, name='confirm_email'),
 ]
