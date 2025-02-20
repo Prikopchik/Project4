@@ -7,7 +7,7 @@
     <p><strong>Статус:</strong> {{ mailing.get_status_display }}</p>
     <p><strong>Время начала:</strong> {{ mailing.start_time }}</p>
     <p><strong>Время окончания:</strong> {{ mailing.end_time }}</p>
-    <p><strong>Сообщение:</strong> {{ mailing.message.content }}</p>
+    <p><strong>Сообщение:</strong> {{ mailing.message }}</p>
 
     <p><strong>Клиенты:</strong></p>
     <ul>
@@ -19,4 +19,5 @@
     </ul>
 
     <a href="{% url 'mailings:user_mailing_list' %}">Назад к списку рассылок</a>
+    <p></p> <a href="{% url 'mailings:mailing_list' %}">Администрирование </a></p>
 {% endblock %}

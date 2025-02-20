@@ -2,10 +2,11 @@
 
 {% block content %}
 <h1>Список рассылок</h1>
-<a href="{% url 'mailings:create_mailing' %}">Создать рассылку</a>
+<a href="{% url 'mailings:create_mailing' %}">Создать рассылку</a> 
 {% for mailing in mailings %}
     <div>
-        <p>{{ mailing.title }}</p>
+        <p><strong>ID:</strong> {{ mailing.id }}</p>
+        <a href="{% url 'mailings:view_mailing' mailing.pk %}">Просмотр</a>
         <a href="{% url 'mailings:edit_mailing' mailing.pk %}">Редактировать</a>
         <a href="{% url 'mailings:delete_mailing' mailing.pk %}">Удалить</a>
     </div>

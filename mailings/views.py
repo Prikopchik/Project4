@@ -36,7 +36,7 @@ def mailing_stats(request):
 
 @cache_page(60 * 15)
 @login_required
-@permission_required('mailing:view_mailing', raise_exception=True)
+@permission_required('mailings:view_mailing', raise_exception=True)
 def mailing_list(request):
     mailings = Mailing.objects.all()
     return render(request, 'mailing_list.html', {'mailings': mailings})
@@ -57,7 +57,7 @@ def edit_mailing(request, mailing_id):
         form = MailingForm(request.POST, instance=mailing)
         if form.is_valid():
             form.save()
-            return redirect('mailing_list')
+            return redirect('mailings:user_mailing_list')
     else:
         form = MailingForm(instance=mailing)
 
@@ -141,6 +141,6 @@ def delete_mailing(request, mailing_id):
 
     if request.method == 'POST':
         mailing.delete()
-        return redirect('mailing_list')
+        return redirect('mailings:user_mailing_list')
 
     return render(request, 'delete_mailing.html', {'mailing': mailing})
